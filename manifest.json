@@ -4,6 +4,10 @@
   "version": "0.0",
   "description": "Firefox extension and web app to hack Schoology Learnosity assessments.",
   "homepage_url": "https://github.com/t1v1/schoology#readme",
+  "permissions": [
+    "http://localhost:3000",
+    "activeTab"
+  ],
   "icons": {
     "48": "icons/48.png",
     "96": "icons/96.png"
@@ -11,10 +15,14 @@
   "content_scripts": [
     {
       "matches": ["https://pausd.schoology.com/common-assessment-delivery/*"],
-      "js": ["schoology.js"]
+      "js": ["content.js"]
     }
   ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "browser_action": {
-    "default_icon": "icons/48.png"
+    "default_icon": "icons/48.png",
+    "default_title": "Schoology"
   }
 }
