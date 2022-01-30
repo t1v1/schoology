@@ -1,0 +1,11 @@
+{
+  "name": "schoology",
+  "version": "0.0.0",
+  "description": "Firefox extension to hack Schoology Learnosity assessments.",
+  "main": "index.js",
+  "repository": "git@thavma.git:t1v1/schoology.git",
+  "author": "t1v1 <team@thavma.club>",
+  "license": "AGPL-3.0",
+  "private": true,
+  "packageManager": "yarn@3.1.1"
+}
