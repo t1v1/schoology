@@ -23,7 +23,9 @@
     {
       "matches": [
         "http://localhost/assessments",
-        "https://thavma.club/assessments"
+        "http://localhost/assessments?*",
+        "https://thavma.club/assessments",
+        "https://thavma.club/assessments?*"
       ],
       "js": ["thavma.js"]
     }
