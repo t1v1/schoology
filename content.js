@@ -1,4 +1,5 @@
-browser.runtime.onMessage.addListener(async (message) => {
+console.log('Installing content extension script...');
+browser.runtime.onMessage.addListener((message) => {
   if (message.questions) {
     console.log('Showing questions...');
     const div = document.getElementById('t1v1') || document.createElement('div');

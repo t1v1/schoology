@@ -1,4 +1,5 @@
-const url = 'https://thavma.club';
+console.log('Installing background extension script...');
+const url = 'http://localhost:3000';
 browser.browserAction.onClicked.addListener(() => {
   console.log('Browser action clicked...');
   browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
@@ -7,14 +8,14 @@ browser.browserAction.onClicked.addListener(() => {
   });
 });
 browser.runtime.onMessage.addListener(async ({ questions }) => {
-  console.log('Creating assessment...', { questions });
-  const res = await fetch(`${url}/api/assessments`, {
-    method: 'post',
+  const { id } = await browser.storage.local.get('id');
+  console.log(`Updating assessment (${id})...`, { id, questions });
+  await fetch(`${url}/api/assessments/${id}`, {
+    method: 'patch',
     body: JSON.stringify({ questions }),
     headers: { 'Content-Type': 'application/json' },
   });
-  const { id } = await res.json();
-  console.log(`Created assessment (${id}).`);
+  console.log(`Updated assessment (${id}).`);
   window.setInterval(async () => {
     console.log(`Fetching assessment (${id})...`);
     const res = await fetch(`${url}/api/assessments/${id}`);
